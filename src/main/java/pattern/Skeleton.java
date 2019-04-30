@@ -1,12 +1,12 @@
 package pattern;
 
-public class Value {
+public class Skeleton {
 
-    public static Value VOID = new Value(new Object());
+    public static Skeleton VOID = new Skeleton(new Object());
 
     final Object value;
     
-    public Value(Object value) {
+    public Skeleton(Object value) {
         this.value = value;
     }
 
@@ -47,7 +47,7 @@ public class Value {
             return false;
         }
 
-        Value that = (Value)o;
+        Skeleton that = (Skeleton)o;
 
         return this.value.equals(that.value);
     }

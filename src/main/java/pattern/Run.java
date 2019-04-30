@@ -1,16 +1,14 @@
 package pattern;
 
-import java.lang.Exception;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import pattern.skel.SkelLexer;
+import pattern.skel.SkelParser;
 
-
-@SuppressWarnings("deprecation")
-public class Main {
-
-    public static <T> void main(String[] args) throws Exception {
+public class Run {
+	public static <T> void main(String[] args) throws Exception {
 
         if (args.length == 0) {
             args = new String[]{"src/main/pattern/pattern.skel"};
@@ -18,10 +16,11 @@ public class Main {
 
         System.out.println("parsing: " + args[0]);
 
-        PatternLexer lexer = new PatternLexer(new ANTLRFileStream(args[0]));
-        PatternParser parser = new PatternParser(new CommonTokenStream(lexer));
+        SkelLexer lexer = new SkelLexer(new ANTLRFileStream(args[0]));
+        SkelParser parser = new SkelParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.parse();
-        SkeletonVisitor<T> visitor = new SkeletonVisitor<T>();
+        System.out.println(tree.getChildCount());
+        SkeletonsVisitor<T> visitor = new SkeletonsVisitor<T>();
         visitor.visit(tree);
     }
 }
