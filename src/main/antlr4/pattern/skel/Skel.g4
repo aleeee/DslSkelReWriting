@@ -44,7 +44,7 @@ farm : FARM block;
 
 map : MAP block;
 
-stages : OPAR (patt COMMA+ patt)+CPAR;
+stages : OPAR (patt COMMA patt)+CPAR;
 
 COMMA : ',';
 SCOL : ';';

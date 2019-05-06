@@ -1,6 +1,9 @@
 package pattern;
 
-import org.antlr.v4.runtime.ANTLRFileStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
@@ -15,8 +18,8 @@ public class Run {
         }
 
         System.out.println("parsing: " + args[0]);
-
-        SkelLexer lexer = new SkelLexer(new ANTLRFileStream(args[0]));
+        Path path = Paths.get(args[0]);
+        SkelLexer lexer = new SkelLexer(CharStreams.fromPath(path));
         SkelParser parser = new SkelParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.parse();
         System.out.println(tree.getChildCount());

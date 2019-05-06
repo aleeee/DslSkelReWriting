@@ -21,141 +21,134 @@ import pattern.skel.SkelParser.SequenceContext;
 import pattern.skel.SkelParser.StagesContext;
 import pattern.skel.SkelParser.StreamContext;
 
-public class SkeletonsVisitor<T> extends SkelBaseVisitor<T> {
+public class SVisitor extends SkelBaseVisitor<SkeletonPattern> {
 
 	@Override
-	public T visitParse(ParseContext ctx) {
+	public SkeletonPattern visitParse(ParseContext ctx) {
 		// TODO Auto-generated method stub
-		System.out.println(ctx.toStringTree());
 		return super.visitParse(ctx);
 	}
 
 	@Override
-	public T visitAssignment(AssignmentContext ctx) {
+	public SkeletonPattern visitAssignment(AssignmentContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitAssignment(ctx);
 	}
 
 	@Override
-	public T visitPatt(PattContext ctx) {
+	public SkeletonPattern visitPatt(PattContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitPatt(ctx);
 	}
 
 	@Override
-	public T visitMain(MainContext ctx) {
+	public SkeletonPattern visitMain(MainContext ctx) {
 		// TODO Auto-generated method stub
-		System.out.println("main found");
-		System.out.println(ctx.toStringTree());
-		System.out.println(ctx.getParent().getText());
-		ctx.children.stream().forEach(c->{ System.out.println(c.getText());
-			});
-		
 		return super.visitMain(ctx);
 	}
 
 	@Override
-	public T visitStream(StreamContext ctx) {
+	public SkeletonPattern visitStream(StreamContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStream(ctx);
 	}
 
 	@Override
-	public T visitSequence(SequenceContext ctx) {
+	public SkeletonPattern visitSequence(SequenceContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitSequence(ctx);
 	}
 
 	@Override
-	public T visitDataparallel(DataparallelContext ctx) {
+	public SkeletonPattern visitDataparallel(DataparallelContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitDataparallel(ctx);
 	}
 
 	@Override
-	public T visitBlock(BlockContext ctx) {
+	public SkeletonPattern visitBlock(BlockContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitBlock(ctx);
 	}
 
 	@Override
-	public T visitSeq(SeqContext ctx) {
+	public SkeletonPattern visitSeq(SeqContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitSeq(ctx);
 	}
 
 	@Override
-	public T visitComp(CompContext ctx) {
+	public SkeletonPattern visitComp(CompContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitComp(ctx);
 	}
 
 	@Override
-	public T visitPipe(PipeContext ctx) {
+	public SkeletonPattern visitPipe(PipeContext ctx) {
 		// TODO Auto-generated method stub
+		System.out.println(ctx.children);
+		System.out.println(ctx.getParent().getChild(0).getParent().getText());
 		return super.visitPipe(ctx);
 	}
 
 	@Override
-	public T visitFarm(FarmContext ctx) {
+	public SkeletonPattern visitFarm(FarmContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitFarm(ctx);
 	}
 
 	@Override
-	public T visitMap(MapContext ctx) {
+	public SkeletonPattern visitMap(MapContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitMap(ctx);
 	}
 
 	@Override
-	public T visitStages(StagesContext ctx) {
+	public SkeletonPattern visitStages(StagesContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStages(ctx);
 	}
 
 	@Override
-	public T visit(ParseTree tree) {
+	public SkeletonPattern visit(ParseTree tree) {
 		// TODO Auto-generated method stub
 		return super.visit(tree);
 	}
 
 	@Override
-	public T visitChildren(RuleNode node) {
+	public SkeletonPattern visitChildren(RuleNode node) {
 		// TODO Auto-generated method stub
 		return super.visitChildren(node);
 	}
 
 	@Override
-	public T visitTerminal(TerminalNode node) {
+	public SkeletonPattern visitTerminal(TerminalNode node) {
 		// TODO Auto-generated method stub
 		return super.visitTerminal(node);
 	}
 
 	@Override
-	public T visitErrorNode(ErrorNode node) {
+	public SkeletonPattern visitErrorNode(ErrorNode node) {
 		// TODO Auto-generated method stub
 		return super.visitErrorNode(node);
 	}
 
 	@Override
-	protected T defaultResult() {
+	protected SkeletonPattern defaultResult() {
 		// TODO Auto-generated method stub
 		return super.defaultResult();
 	}
 
 	@Override
-	protected T aggregateResult(T aggregate, T nextResult) {
+	protected SkeletonPattern aggregateResult(SkeletonPattern aggregate, SkeletonPattern nextResult) {
 		// TODO Auto-generated method stub
 		return super.aggregateResult(aggregate, nextResult);
 	}
 
 	@Override
-	protected boolean shouldVisitNextChild(RuleNode node, T currentResult) {
+	protected boolean shouldVisitNextChild(RuleNode node, SkeletonPattern currentResult) {
 		// TODO Auto-generated method stub
 		return super.shouldVisitNextChild(node, currentResult);
 	}
-
-	
 
 }
