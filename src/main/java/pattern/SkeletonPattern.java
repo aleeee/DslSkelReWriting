@@ -1,31 +1,39 @@
 package pattern;
 
-public class Skeleton {
+import model.Comp;
+import model.Farm;
+import model.Map;
+import model.Pipeline;
+import model.Seq;
 
-    public static Skeleton VOID = new Skeleton(new Object());
+public class SkeletonPattern {
+
+    public static SkeletonPattern VOID = new SkeletonPattern(new Object());
 
     final Object value;
     
-    public Skeleton(Object value) {
+    public SkeletonPattern(Object value) {
         this.value = value;
     }
 
-    public Boolean asBoolean() {
-        return (Boolean)value;
+    public Farm asFarm() {
+        return (Farm)value;
     }
 
-    public Double asDouble() {
-        return (Double)value;
+    public Pipeline asPipeline() {
+        return (Pipeline)value;
     }
 
-    public String asString() {
-        return String.valueOf(value);
+    public Seq asSeq() {
+        return (Seq)value;
     }
 
-    public boolean isDouble() {
-        return value instanceof Double;
+    public Map asMap() {
+        return (Map)value;
     }
-
+    public Comp asComp() {
+        return (Comp)value;
+    }
     @Override
     public int hashCode() {
 
@@ -47,7 +55,7 @@ public class Skeleton {
             return false;
         }
 
-        Skeleton that = (Skeleton)o;
+        SkeletonPattern that = (SkeletonPattern)o;
 
         return this.value.equals(that.value);
     }
