@@ -35,11 +35,11 @@ public class Run {
         SkeletonsVisitor<T> visitor = new SkeletonsVisitor<T>();
         visitor.visit(tree); 
         // http://stackoverflow.com/questions/30134121/drawing-parse-tree-in-antlr4-using-java/30137407#30137407
-		 List<String> ruleNames=Arrays.asList(parser.getRuleNames());
-		 System.out.println("rules" + ruleNames);
+//		 List<String> ruleNames=Arrays.asList(parser.getRuleNames());
+//		 System.out.println("rules" + ruleNames);
 		 // http://stackoverflow.com/questions/34832518/antlr4-dotgenerator-example
-		 TreeViewer tv=new TreeViewer(ruleNames,tree.getChild(2));
-		 showTreeViewer(tv);
+//		 TreeViewer tv=new TreeViewer(ruleNames,tree.getChild(2));
+//		 showTreeViewer(tv);
     }
 	public static int showTreeViewer(TreeViewer tv) {
 		  JPanel panel = new JPanel();

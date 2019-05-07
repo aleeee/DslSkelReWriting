@@ -26,7 +26,7 @@ public class SkeletonsVisitor<T> extends SkelBaseVisitor<T> {
 	@Override
 	public T visitParse(ParseContext ctx) {
 		// TODO Auto-generated method stub
-		System.out.println(ctx.toStringTree());
+//		System.out.println(ctx.toStringTree());
 		return super.visitParse(ctx);
 	}
 
@@ -46,9 +46,9 @@ public class SkeletonsVisitor<T> extends SkelBaseVisitor<T> {
 	public T visitMain(MainContext ctx) {
 		// TODO Auto-generated method stub
 		System.out.println("main found");
-		System.out.println(ctx.toStringTree());
 		System.out.println(ctx.getParent().getText());
-		ctx.children.stream().forEach(c->{ System.out.println(c.getText());
+		ctx.children.stream().forEach(c->{ System.out.println(c.getText() + c.getParent()
+				);
 			});
 		
 		return super.visitMain(ctx);
@@ -93,6 +93,8 @@ public class SkeletonsVisitor<T> extends SkelBaseVisitor<T> {
 	@Override
 	public T visitPipe(PipeContext ctx) {
 		// TODO Auto-generated method stub
+		System.out.println("pipe");
+		ctx.children.forEach(c -> {System.out.println(c.getText() + c.toStringTree());});
 		return super.visitPipe(ctx);
 	}
 
@@ -116,7 +118,7 @@ public class SkeletonsVisitor<T> extends SkelBaseVisitor<T> {
 
 	@Override
 	public T visit(ParseTree tree) {
-		// TODO Auto-generated method stub
+		System.out.println(tree.getSourceInterval());
 		return super.visit(tree);
 	}
 
