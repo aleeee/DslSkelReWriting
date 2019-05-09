@@ -1,4 +1,4 @@
-grammar Skel1;
+grammar Skel2;
 
 skeletonProgram
  : programPart+ EOF
@@ -11,14 +11,20 @@ statement : assignment ';'
          ;
 mainExpr : mainMethod=main '=' expr=patternExpr ';'
 		;
-assignment : varName=IDENTIFIER '=' expr=patternExpr;
+assignment : varName=IDENTIFIER '=' type=varType expr=patternExpr;
 
 patternExpr : stream=streamPattern
             | seq=sequential
             | dataParallel=dataParallelPattern
             | varName=IDENTIFIER
             ;
-
+        
+varType : Seq
+		| Comp
+		| Farm
+		| Pipe
+		| Map
+		;
 streamPattern : farm=farmSkel
        | pipe=pipeSkel
        ;
@@ -33,17 +39,23 @@ main : 'main';
 
 block : '(' expr=patternExpr ')' ;
 
-sequence : 'Seq' '(' NUMBER ')';
+sequence : '(' NUMBER ')';
 
-composition : 'Comp' block;
+composition :  block;
 
-pipeSkel : 'Pipe' stages;
+pipeSkel :  stages;
 
-farmSkel : 'Farm' block;
+farmSkel :  block;
 
-mapSkel : 'Map' block;
+mapSkel :  block;
 
 stages: '(' expr+=patternExpr  ',' expr+=patternExpr (',' expr+=patternExpr)* ')' ;
+
+Seq : 'Seq';
+Comp: 'Comp';
+Farm: 'Farm';
+Pipe: 'Pipe';
+Map: 'Map';
 
 IDENTIFIER: [a-zA-Z][a-zA-Z0-9]* ;
 NUMBER: [0-9]+;

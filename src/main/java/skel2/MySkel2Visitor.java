@@ -1,31 +1,27 @@
-package skel1;
+package skel2;
 
-import java.util.HashMap;
-import java.util.Map;
+import pattern.skel2.Skel2BaseVisitor;
+import pattern.skel2.Skel2Parser.AssignmentContext;
+import pattern.skel2.Skel2Parser.BlockContext;
+import pattern.skel2.Skel2Parser.CompositionContext;
+import pattern.skel2.Skel2Parser.DataParallelPatternContext;
+import pattern.skel2.Skel2Parser.FarmSkelContext;
+import pattern.skel2.Skel2Parser.MainContext;
+import pattern.skel2.Skel2Parser.MainExprContext;
+import pattern.skel2.Skel2Parser.MapSkelContext;
+import pattern.skel2.Skel2Parser.PatternExprContext;
+import pattern.skel2.Skel2Parser.PipeSkelContext;
+import pattern.skel2.Skel2Parser.ProgramPartContext;
+import pattern.skel2.Skel2Parser.SequenceContext;
+import pattern.skel2.Skel2Parser.SequentialContext;
+import pattern.skel2.Skel2Parser.SkeletonProgramContext;
+import pattern.skel2.Skel2Parser.StagesContext;
+import pattern.skel2.Skel2Parser.StatementContext;
+import pattern.skel2.Skel2Parser.StreamPatternContext;
+import pattern.skel2.Skel2Parser.VarTypeContext;
 
-import org.antlr.v4.runtime.tree.ParseTree;
+public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 
-import pattern.skel1.Skel1BaseVisitor;
-import pattern.skel1.Skel1Parser.AssignmentContext;
-import pattern.skel1.Skel1Parser.BlockContext;
-import pattern.skel1.Skel1Parser.CompositionContext;
-import pattern.skel1.Skel1Parser.DataParallelPatternContext;
-import pattern.skel1.Skel1Parser.FarmSkelContext;
-import pattern.skel1.Skel1Parser.MainContext;
-import pattern.skel1.Skel1Parser.MainExprContext;
-import pattern.skel1.Skel1Parser.MapSkelContext;
-import pattern.skel1.Skel1Parser.PatternExprContext;
-import pattern.skel1.Skel1Parser.PipeSkelContext;
-import pattern.skel1.Skel1Parser.ProgramPartContext;
-import pattern.skel1.Skel1Parser.SequenceContext;
-import pattern.skel1.Skel1Parser.SequentialContext;
-import pattern.skel1.Skel1Parser.SkeletonProgramContext;
-import pattern.skel1.Skel1Parser.StagesContext;
-import pattern.skel1.Skel1Parser.StatementContext;
-import pattern.skel1.Skel1Parser.StreamPatternContext;
-
-public class MySkel1Visitor<T> extends Skel1BaseVisitor<T> {
-	private Map<String,String> variables = new HashMap<>();
 	@Override
 	public T visitSkeletonProgram(SkeletonProgramContext ctx) {
 		// TODO Auto-generated method stub
@@ -46,16 +42,14 @@ public class MySkel1Visitor<T> extends Skel1BaseVisitor<T> {
 
 	@Override
 	public T visitMainExpr(MainExprContext ctx) {
-		System.out.println("main");
-//		System.out.println(ctx.getChild(2).getText());
-		ParseTree tree = ctx.getChild(2);
-
+		// TODO Auto-generated method stub
 		return super.visitMainExpr(ctx);
 	}
 
 	@Override
 	public T visitAssignment(AssignmentContext ctx) {
-		
+		System.out.println(ctx.varName.getText() +ctx.type.getText());
+		// TODO Auto-generated method stub
 		return super.visitAssignment(ctx);
 	}
 
@@ -63,6 +57,12 @@ public class MySkel1Visitor<T> extends Skel1BaseVisitor<T> {
 	public T visitPatternExpr(PatternExprContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitPatternExpr(ctx);
+	}
+
+	@Override
+	public T visitVarType(VarTypeContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitVarType(ctx);
 	}
 
 	@Override
@@ -85,8 +85,7 @@ public class MySkel1Visitor<T> extends Skel1BaseVisitor<T> {
 
 	@Override
 	public T visitMain(MainContext ctx) {
-
-		
+		// TODO Auto-generated method stub
 		return super.visitMain(ctx);
 	}
 
@@ -132,6 +131,4 @@ public class MySkel1Visitor<T> extends Skel1BaseVisitor<T> {
 		return super.visitStages(ctx);
 	}
 
-	
-
-		}
+}

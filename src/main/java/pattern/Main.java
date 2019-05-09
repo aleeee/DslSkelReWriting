@@ -24,7 +24,7 @@ public class Main {
         SkelLexer lexer = new SkelLexer(new ANTLRFileStream(args[0]));
         SkelParser parser = new SkelParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.parse();
-        SVisitor visitor = new SVisitor();
-        visitor.visit(tree);
+//        SVisitor visitor = new SVisitor();
+//        visitor.visit(tree);
     }
 }
