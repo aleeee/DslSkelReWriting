@@ -4,12 +4,13 @@ program : programPart+
 		| OTHER {System.err.println("unknown char: " + $OTHER.text);}
 		;
 
-programPart : statement ';'       #MainStatement            
+programPart : (statement ';')* main      #MainStatement            
  			;
 
 statement : assignment
          ;
-
+main : mainExpr='main' '=' patternExpr ';'
+	 ;
 assignment : varName=IDENTIFIER '=' expr=patternExpr;
 
 patternExpr : stream=streamPattern
