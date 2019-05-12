@@ -9,7 +9,7 @@ programPart : (statement)* mainExpr
 
 statement : assignment ';'
          ;
-mainExpr : mainMethod=main '=' expr=patternExpr ';'
+mainExpr : mainMethod=main '=' type=varType expr=patternExpr ';'
 		;
 assignment : varName=IDENTIFIER '=' type=varType expr=patternExpr;
 
@@ -39,15 +39,15 @@ main : 'main';
 
 block : '(' expr=patternExpr ')' ;
 
-sequence : '(' NUMBER ')';
+sequence :  '(' ts= NUMBER ')';
 
-composition :  block;
+composition :   block;
 
-pipeSkel :  stages;
+pipeSkel :   stages;
 
 farmSkel :  block;
 
-mapSkel :  block;
+mapSkel :   block;
 
 stages: '(' expr+=patternExpr  ',' expr+=patternExpr (',' expr+=patternExpr)* ')' ;
 

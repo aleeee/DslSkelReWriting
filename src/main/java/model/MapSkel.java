@@ -1,6 +1,10 @@
 package model;
 
-public class Map implements Skeleton {
+public class MapSkel extends SkeletonModel{
+	
+	public  MapSkel(long serviceTime) {
+		this.serviceTime = serviceTime;
+	}
 
 	@Override
 	public int parallelismDegree() {

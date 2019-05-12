@@ -1,7 +1,10 @@
 package model;
 
-public class Farm implements Skeleton {
-
+public class Farm extends SkeletonModel{
+	
+	public Farm(long serviceTime) {
+		this.serviceTime=serviceTime;
+	}
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub

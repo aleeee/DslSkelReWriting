@@ -1,7 +1,10 @@
 package model;
 
-public class Seq implements Skeleton {
-
+public class Seq extends SkeletonModel{
+	
+	public Seq(long serviceTime) {
+		this.serviceTime = serviceTime;
+	}
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub
@@ -10,8 +13,8 @@ public class Seq implements Skeleton {
 
 	@Override
 	public long serviceTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.serviceTime;
 	}
 
 	@Override
