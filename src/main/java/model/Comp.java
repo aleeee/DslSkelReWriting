@@ -1,7 +1,10 @@
 package model;
 
-public class Comp implements Skeleton {
-
+public class Comp extends SkeletonModel {
+	
+	public Comp(long serviceTime) {
+		this.serviceTime = serviceTime;
+	}
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub

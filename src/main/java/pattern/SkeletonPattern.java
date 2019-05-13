@@ -2,7 +2,7 @@ package pattern;
 
 import model.Comp;
 import model.Farm;
-import model.Map;
+import model.MapSkel;
 import model.Pipeline;
 import model.Seq;
 
@@ -28,8 +28,8 @@ public class SkeletonPattern {
         return (Seq)value;
     }
 
-    public Map asMap() {
-        return (Map)value;
+    public MapSkel asMap() {
+        return (MapSkel)value;
     }
     public Comp asComp() {
         return (Comp)value;
