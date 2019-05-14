@@ -25,6 +25,7 @@ import pattern.skel2.Skel2Parser.StagesContext;
 import pattern.skel2.Skel2Parser.StreamPatternContext;
 import pattern.skel2.Skel2Parser.VarTypeContext;
 import tree.Node;
+import util.Util;
 
 public class Skel2Visitor1 extends Skel2BaseVisitor<SkelType>{
 
@@ -41,28 +42,7 @@ public class Skel2Visitor1 extends Skel2BaseVisitor<SkelType>{
 	@Override
 	public SkelType visitAssignment(AssignmentContext ctx) {
 		Skeleton sk = null;
-		switch(ctx.type.getText()) {
-		case "Seq":
-//			System.out.println("sequential " + ctx.expr.seq.sec.ts.getText());
-			sk = new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
-			variables.put(ctx.varName.getText(), sk);
-			break;
-		case "Comp":
-			sk= new Comp(0);
-			variables.put(ctx.varName.getText(),sk);
-			break;
-		case "Farm":
-			sk = new Farm(0);
-			variables.put(ctx.varName.getText()	,sk);
-			break;
-		case "Pipe":
-			sk = new Pipeline(0);
-			variables.put(ctx.varName.getText(), sk);
-			break;
-		case "Map":
-			sk = new model.MapSkel(0);
-			variables.put(ctx.varName.getText(),sk);
-		}
+		variables.put(ctx.varName.getText(),Util.getType(ctx.varName.getText(), ctx));
 		return super.visitAssignment(ctx);
 	}
 	
