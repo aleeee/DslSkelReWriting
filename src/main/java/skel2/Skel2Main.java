@@ -39,6 +39,16 @@ public class Skel2Main {
 	    }
 		
 			
-	
+	/**
+	 * start at main
+	 * create root node
+	 * add childNode . visit(ctx.expr)
+	 * each pattern visitor creates 
+	 * 	creates a node
+	 * 	add child nodes . visit(ctx.depending on the pattern choose the exp)
+	 * pipe and comp can have more than one children
+	 * farm, seq and map can have only one child
+	 * 
+	 */
 
 }

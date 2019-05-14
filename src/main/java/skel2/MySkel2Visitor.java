@@ -2,6 +2,7 @@ package skel2;
 
 import java.nio.channels.Pipe;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -15,6 +16,7 @@ import model.Pipeline;
 import model.Seq;
 import model.Skeleton;
 import pattern.skel2.Skel2BaseVisitor;
+import pattern.skel2.Skel2Parser;
 import pattern.skel2.Skel2Parser.AssignmentContext;
 import pattern.skel2.Skel2Parser.BlockContext;
 import pattern.skel2.Skel2Parser.CompositionContext;
@@ -33,6 +35,7 @@ import pattern.skel2.Skel2Parser.StagesContext;
 import pattern.skel2.Skel2Parser.StatementContext;
 import pattern.skel2.Skel2Parser.StreamPatternContext;
 import pattern.skel2.Skel2Parser.VarTypeContext;
+import tree.Node;
 
 public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 	Map<String,Skeleton> variables = new HashMap<>();
@@ -58,23 +61,20 @@ public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 	public T visitMainExpr(MainExprContext ctx) {
 		// TODO Auto-generated method stub
 		variables.entrySet().forEach(e -> {System.out.println(e.getKey() + " " + e.getValue().serviceTime());});
-		try {
-        T t = visit(ctx.type); //root
-        T tt = visit(ctx.expr.stream.pipe.stages());
-        System.out.println(tt);
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+		PatternExprContext exp = ctx.patternExpr();
+		exp.stream.pipeSkel().stages().expr.forEach(c -> {System.out.println("cc"+ c.getText());});
+//		System.out.println(root);
+//		System.out.println("m "+ctx.expr.getText() + ctx.expr.getRuleContext().getText());
 		return super.visitMainExpr(ctx);
 	}
 
 	@Override
 	public T visitAssignment(AssignmentContext ctx) {
-		System.out.println(ctx.varName.getText() +ctx.type.getText() + "    " + ctx.expr.getText());
+//		System.out.println(ctx.varName.getText() +ctx.type.getText() + "    " + ctx.expr.getText());
 		Skeleton sk = null;
 		switch(ctx.type.getText()) {
 		case "Seq":
-			System.out.println("sequential " + ctx.expr.seq.sec.ts.getText());
+//			System.out.println("sequential " + ctx.expr.seq.sec.ts.getText());
 			sk = new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
 			variables.put(ctx.varName.getText(), sk);
 			break;
@@ -172,7 +172,7 @@ public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 	@Override
 	public T visitStages(StagesContext ctx) {
 		// TODO Auto-generated method stub
-		System.out.println("stages " + ctx.getText());
+//		System.out.println("stages " + ctx.getText());
 		
 		ctx.expr.forEach(e -> {visit(e);});
 		return super.visitStages(ctx);
@@ -180,7 +180,7 @@ public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 
 	@Override
 	public T visit(ParseTree tree) {
-		System.out.println("tree " + tree.getText());
+//		System.out.println("tree " + tree.getText());
 		return super.visit(tree);
 	}
 
@@ -192,7 +192,7 @@ public class MySkel2Visitor<T> extends Skel2BaseVisitor<T> {
 
 	@Override
 	public T visitTerminal(TerminalNode node) {
-		System.out.println("terminal " + node);
+//		System.out.println("terminal " + node);
 		return super.visitTerminal(node);
 	}
 
