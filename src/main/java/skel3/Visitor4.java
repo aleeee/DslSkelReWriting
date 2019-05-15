@@ -35,7 +35,7 @@ import pattern.skel3.Skel3Parser.VarTypeContext;
 import tree.Node;
 import util.Util;
 
-public class Visitor3 extends Skel3BaseVisitor<Node>{
+public class Visitor4 extends Skel3BaseVisitor<Node>{
 	Map<String,Skeleton> variables = new HashMap<>();
 
 	@Override

@@ -3,25 +3,18 @@ package skel3;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
-import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.Tree;
-
 import pattern.skel3.Skel3Lexer;
 import pattern.skel3.Skel3Parser;
 import tree.Node;
-import tree.Snippet;
+import util.Util;
 
 
 
 
-public class Main3 {
+public class Main3_1 {
 	public static  <T> void main(String[] args) throws Exception {
 
         if (args.length == 0) {
@@ -37,8 +30,9 @@ public class Main3 {
         Node n =visitor3.visit(tree);
         
 //		display(n);
-        printTree(getMainNode(n));
+//        printTree(getMainNode(n));
 //        System.out.println(getMainNode(n));
+        System.out.println(Util.computeServiceTime(getMainNode(n),0));
     }
 	
 	private static Node getMainNode(Node tree){
@@ -71,21 +65,24 @@ public class Main3 {
 			}
 		
 	}
-	public static int showTreeViewer(Node n) {
-		 
-		  JPanel panel = new JPanel();
-//		  tv.setScale(2);
-		  n.setSize(200,500);
-		  panel.add(n);
-		  return JOptionPane.showConfirmDialog(null, panel, "ParseTree", 
-		    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-		} 
-	public static void display(Node n){
-		JFrame jFrame = new JFrame();
-        jFrame.add(n);
-        jFrame.setSize(500, 500);
-        jFrame.setVisible(true); 
-	}
+/**
+ * compute serviceTime
+  if has child
+    ts =  child.compute   
+    if(farm)
+      ts/n
+    if(map)
+
+  else if has children
+
+    ts += children.foreach.compute
+    if(pipe)
+      max(children.compute(max of ts))
+    if(comp)
+    ts = ts
+  else 
+    compute
+ */
 	
 	
 }

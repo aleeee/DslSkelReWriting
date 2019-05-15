@@ -6,16 +6,17 @@ import model.Farm;
 import model.Pipeline;
 import model.Seq;
 import model.Skeleton;
-import pattern.skel2.Skel2Parser.AssignmentContext;
+import pattern.skel3.Skel3Parser.AssignmentContext;
+import tree.Node;
 
 public class Util {
 
-	public static Skeleton getType(String type) {
+	public static Skeleton getType(AssignmentContext ctx) {
 		
-		switch(type) {
+		switch(ctx.varType().getText()) {
 		case "Seq":
-			return new Seq(0);
-//			return new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
+//			return new Seq(ctx.expr.se);
+			return new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
 		case "Comp":
 			return new Comp(0);
 		case "Farm":
@@ -26,5 +27,21 @@ public class Util {
 			return new model.MapSkel(0);
 		}
 		return null;
+	}
+	public static Skeleton getType(String ctx) {
+		return null;
+	}
+	
+	public static long computeServiceTime(Node n,long ts) {
+		
+		if(n.getChild() != null) {
+			ts = computeServiceTime(n.getChild(),ts);
+		}else if(n.getChildren() != null) {
+			final long t = ts;
+			n.getChildren().forEach(c -> computeServiceTime(c,t));
+		}else {
+			ts= n.getSkeleton().serviceTime();
+		}
+		return ts;
 	}
 }
