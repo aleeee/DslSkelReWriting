@@ -67,7 +67,7 @@ public class Visitor3 extends Skel3BaseVisitor<Node>{
 
 	@Override
 	public Node visitMainExpr(MainExprContext ctx) {
-		Node root = new Node(ctx.type.getText(),Util.getType(ctx.type.getText()));
+		Node root = new Node("main",null);
 		Node child = visit(ctx.expr);
 		root.setChild(child);
 		System.out.println("root " + root.toString() );
