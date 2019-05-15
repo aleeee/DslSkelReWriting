@@ -9,6 +9,20 @@ public class Node {
 	Node parent;
 	String lable;
 	Skeleton skeleton;
+	Node child;
+	
+	public Skeleton getSkeleton() {
+		return skeleton;
+	}
+	public void setSkeleton(Skeleton skeleton) {
+		this.skeleton = skeleton;
+	}
+	public Node getChild() {
+		return child;
+	}
+	public void setChild(Node child) {
+		this.child = child;
+	}
 	public Node(String lable, Skeleton s) {
 		super();
 		this.lable = lable;
@@ -34,8 +48,10 @@ public class Node {
 	}
 	@Override
 	public String toString() {
-		return "Node [children=" + children + ", parent=" + parent + ", lable=" + lable + "]";
+		return "Node [ lable=" + lable + ", skeleton=" + skeleton
+				+ ", child=" + child + " +children=" + children +"]";
 	}
+	
 	
 	
 }

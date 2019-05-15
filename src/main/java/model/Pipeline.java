@@ -24,9 +24,8 @@ public class Pipeline extends SkeletonModel {
 	}
 	@Override
 	public String toString() {
-		return "Pipeline [serviceTime=" + serviceTime + ", parallelismDegree()=" + parallelismDegree()
-				+ ", serviceTime()=" + serviceTime() + ", completionTime()=" + completionTime() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "Pipeline [serviceTime=" + serviceTime + "]";
 	}
+	
 
 }

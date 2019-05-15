@@ -29,7 +29,8 @@ public class Skel2Main {
 //	       System.out.println(mainCtx.toString());
 	        MySkel2Visitor<T> visitor = new MySkel2Visitor<T>();
 	        Skel2Visitor1 visitor2 = new Skel2Visitor1();
-	        visitor2.visit(tree); 
+	        Skel2Visitor2 visitor3 = new Skel2Visitor2();
+	        visitor3.visit(tree); 
 	        // http://stackoverflow.com/questions/30134121/drawing-parse-tree-in-antlr4-using-java/30137407#30137407
 //			 List<String> ruleNames=Arrays.asList(parser.getRuleNames());
 //			 System.out.println("rules" + ruleNames);

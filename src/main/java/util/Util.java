@@ -10,11 +10,12 @@ import pattern.skel2.Skel2Parser.AssignmentContext;
 
 public class Util {
 
-	public static Skeleton getType(String type, AssignmentContext ctx) {
+	public static Skeleton getType(String type) {
 		
 		switch(type) {
 		case "Seq":
-			return new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
+			return new Seq(0);
+//			return new Seq(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
 		case "Comp":
 			return new Comp(0);
 		case "Farm":

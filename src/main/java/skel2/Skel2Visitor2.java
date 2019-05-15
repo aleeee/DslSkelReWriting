@@ -3,10 +3,6 @@ package skel2;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.Comp;
-import model.Farm;
-import model.Pipeline;
-import model.Seq;
 import model.SkelType;
 import model.Skeleton;
 import pattern.skel2.Skel2BaseVisitor;
@@ -15,113 +11,118 @@ import pattern.skel2.Skel2Parser.BlockContext;
 import pattern.skel2.Skel2Parser.CompositionContext;
 import pattern.skel2.Skel2Parser.DataParallelPatternContext;
 import pattern.skel2.Skel2Parser.FarmSkelContext;
+import pattern.skel2.Skel2Parser.MainContext;
 import pattern.skel2.Skel2Parser.MainExprContext;
 import pattern.skel2.Skel2Parser.MapSkelContext;
 import pattern.skel2.Skel2Parser.PatternExprContext;
 import pattern.skel2.Skel2Parser.PipeSkelContext;
+import pattern.skel2.Skel2Parser.ProgramPartContext;
 import pattern.skel2.Skel2Parser.SequenceContext;
 import pattern.skel2.Skel2Parser.SequentialContext;
+import pattern.skel2.Skel2Parser.SkeletonProgramContext;
 import pattern.skel2.Skel2Parser.StagesContext;
+import pattern.skel2.Skel2Parser.StatementContext;
 import pattern.skel2.Skel2Parser.StreamPatternContext;
 import pattern.skel2.Skel2Parser.VarTypeContext;
 import tree.Node;
 import util.Util;
 
-public class Skel2Visitor1 extends Skel2BaseVisitor<SkelType>{
-
+public class Skel2Visitor2 extends Skel2BaseVisitor<Node> {
 	Map<String,Skeleton> variables = new HashMap<>();
 
+
+
 	@Override
-	public SkelType visitMainExpr(MainExprContext ctx) {
-		Node root = new Node(ctx.type.getText(),null);
-		SkelType exp = visit(ctx.expr);
-		System.out.println(exp);
-		return super.visitMainExpr(ctx);
+	public Node visitMainExpr(MainExprContext ctx) {
+		Node root = new Node(ctx.type.getText(),Util.getType(ctx.type.getText()));
+		Node child = visit(ctx.expr);
+		System.out.println("root " + root.toString() );
+		System.out.println("child " + child);
+		return root;
 	}
 
 	@Override
-	public SkelType visitAssignment(AssignmentContext ctx) {
-		Skeleton sk = null;
+	public Node visitAssignment(AssignmentContext ctx) {
 		variables.put(ctx.varName.getText(),Util.getType(ctx.varName.getText()));
 		return super.visitAssignment(ctx);
 	}
-	
 
 	@Override
-	public SkelType visitPatternExpr(PatternExprContext ctx) {
-		Node n ;
-		//create a node and add children to it
-		if(ctx.varName != null){
-			 n = new Node(ctx.varName.getText(),variables.get(ctx.varName));
-//			 n.setChildren(children);
-			}
-		
+	public Node visitPatternExpr(PatternExprContext ctx) {
+		// TODO Auto-generated method stub
 		return super.visitPatternExpr(ctx);
 	}
 
 	@Override
-	public SkelType visitVarType(VarTypeContext ctx) {
+	public Node visitVarType(VarTypeContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitVarType(ctx);
 	}
 
 	@Override
-	public SkelType visitStreamPattern(StreamPatternContext ctx) {
+	public Node visitStreamPattern(StreamPatternContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStreamPattern(ctx);
 	}
 
 	@Override
-	public SkelType visitSequential(SequentialContext ctx) {
+	public Node visitSequential(SequentialContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitSequential(ctx);
 	}
 
 	@Override
-	public SkelType visitDataParallelPattern(DataParallelPatternContext ctx) {
+	public Node visitDataParallelPattern(DataParallelPatternContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitDataParallelPattern(ctx);
 	}
 
+	@Override
+	public Node visitMain(MainContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitMain(ctx);
+	}
 
 	@Override
-	public SkelType visitBlock(BlockContext ctx) {
+	public Node visitBlock(BlockContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitBlock(ctx);
 	}
 
 	@Override
-	public SkelType visitSequence(SequenceContext ctx) {
-		return new SkelType(new Seq(1));
-	}
-
-	@Override
-	public SkelType visitComposition(CompositionContext ctx) {
-		return new SkelType(new Comp(2));
-	}
-
-	@Override
-	public SkelType visitPipeSkel(PipeSkelContext ctx) {
-		return new SkelType(new Pipeline(2));
-	}
-
-	@Override
-	public SkelType visitFarmSkel(FarmSkelContext ctx) {
-		return new SkelType(new Farm(2));
-	}
-
-	@Override
-	public SkelType visitMapSkel(MapSkelContext ctx) {
+	public Node visitSequence(SequenceContext ctx) {
 		// TODO Auto-generated method stub
+		return super.visitSequence(ctx);
+	}
+
+	@Override
+	public Node visitComposition(CompositionContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitComposition(ctx);
+	}
+
+	@Override
+	public Node visitPipeSkel(PipeSkelContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitPipeSkel(ctx);
+	}
+
+	@Override
+	public Node visitFarmSkel(FarmSkelContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitFarmSkel(ctx);
+	}
+
+	@Override
+	public Node visitMapSkel(MapSkelContext ctx) {
+		
 		return super.visitMapSkel(ctx);
 	}
 
 	@Override
-	public SkelType visitStages(StagesContext ctx) {
+	public Node visitStages(StagesContext ctx) {
 		// TODO Auto-generated method stub
 		return super.visitStages(ctx);
 	}
-
-	
 
 }
