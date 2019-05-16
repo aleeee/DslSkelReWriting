@@ -2,6 +2,16 @@ package model;
 
 public class Pipeline extends SkeletonModel {
 	
+	@Override
+	public long getServiceTime() {
+		// TODO Auto-generated method stub
+		return super.getServiceTime();
+	}
+	@Override
+	public void setServiceTime(long serviceTime) {
+		// TODO Auto-generated method stub
+		super.setServiceTime(serviceTime);
+	}
 	public Pipeline(long serviceTime) {
 		this.serviceTime = serviceTime;
 	}

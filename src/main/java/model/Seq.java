@@ -12,6 +12,16 @@ public class Seq extends SkeletonModel{
 	}
 
 	@Override
+	public long getServiceTime() {
+		// TODO Auto-generated method stub
+		return super.getServiceTime();
+	}
+	@Override
+	public void setServiceTime(long serviceTime) {
+		// TODO Auto-generated method stub
+		super.setServiceTime(serviceTime);
+	}
+	@Override
 	public long serviceTime() {
 		
 		return this.serviceTime;

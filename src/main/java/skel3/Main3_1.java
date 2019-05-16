@@ -10,10 +10,6 @@ import pattern.skel3.Skel3Lexer;
 import pattern.skel3.Skel3Parser;
 import tree.Node;
 import util.Util;
-
-
-
-
 public class Main3_1 {
 	public static  <T> void main(String[] args) throws Exception {
 

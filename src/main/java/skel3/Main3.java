@@ -71,21 +71,7 @@ public class Main3 {
 			}
 		
 	}
-	public static int showTreeViewer(Node n) {
-		 
-		  JPanel panel = new JPanel();
-//		  tv.setScale(2);
-		  n.setSize(200,500);
-		  panel.add(n);
-		  return JOptionPane.showConfirmDialog(null, panel, "ParseTree", 
-		    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-		} 
-	public static void display(Node n){
-		JFrame jFrame = new JFrame();
-        jFrame.add(n);
-        jFrame.setSize(500, 500);
-        jFrame.setVisible(true); 
-	}
+
 	
 	
 }

@@ -33,15 +33,18 @@ public class Util {
 	}
 	
 	public static long computeServiceTime(Node n,long ts) {
-		
+		System.out.println(n + " sk " + ts);
 		if(n.getChild() != null) {
-			ts = computeServiceTime(n.getChild(),ts);
+			ts = ts+ computeServiceTime(n.getChild(),ts);
 		}else if(n.getChildren() != null) {
-			final long t = ts;
-			n.getChildren().forEach(c -> computeServiceTime(c,t));
+			
+			for(Node c : n.getChildren()) {
+				ts = computeServiceTime(c, ts);
+			}
 		}else {
-			ts= n.getSkeleton().serviceTime();
+			ts= ts+n.getSkeleton().serviceTime();
 		}
 		return ts;
 	}
+
 }

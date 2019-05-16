@@ -22,5 +22,15 @@ public class Comp extends SkeletonModel {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public long getServiceTime() {
+		// TODO Auto-generated method stub
+		return super.getServiceTime();
+	}
+	@Override
+	public void setServiceTime(long serviceTime) {
+		// TODO Auto-generated method stub
+		super.setServiceTime(serviceTime);
+	}
 
 }
