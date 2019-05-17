@@ -1,9 +1,17 @@
 package model;
 
-public class MapSkel extends SkeletonModel{
+import visitor.NodeVisitor;
+import visitor.Visitable;
+
+public class MapSkel extends SkeletonModel implements Visitable{
 	
 	public  MapSkel(long serviceTime) {
 		this.serviceTime = serviceTime;
+	}
+	
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);		
 	}
 
 	@Override

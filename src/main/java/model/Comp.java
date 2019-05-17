@@ -1,9 +1,17 @@
 package model;
 
-public class Comp extends SkeletonModel {
+import visitor.NodeVisitor;
+import visitor.Visitable;
+
+public class Comp extends SkeletonModel implements Visitable{
 	
 	public Comp(long serviceTime) {
 		this.serviceTime = serviceTime;
+	}
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 	@Override
 	public int parallelismDegree() {
@@ -32,5 +40,6 @@ public class Comp extends SkeletonModel {
 		// TODO Auto-generated method stub
 		super.setServiceTime(serviceTime);
 	}
+	
 
 }

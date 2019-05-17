@@ -3,15 +3,42 @@ package util;
 
 import model.Comp;
 import model.Farm;
+import model.MapSkel;
 import model.Pipeline;
 import model.Seq;
 import model.Skeleton;
 import pattern.skel3.Skel3Parser.AssignmentContext;
 import tree.Node;
+import tree.model.CompPatt;
+import tree.model.FarmPatt;
+import tree.model.MapPatt;
+import tree.model.PipePatt;
+import tree.model.SeqPatt;
+import tree.model.SkeletonPatt;
 
 public class Util {
 
-	public static Skeleton getType(AssignmentContext ctx) {
+	public static SkeletonPatt getType(AssignmentContext ctx) {
+		
+		switch(ctx.varType().getText()) {
+		case "Seq":
+//			return new Seq(ctx.expr.se);
+			SeqPatt s= new SeqPatt(Long.parseLong(ctx.expr.seq.sec.ts.getText()));
+			s.setLable(ctx.varName.getText());
+			return s;
+			
+		case "Comp":
+			return new CompPatt("comp",0);
+		case "Farm":
+			return new FarmPatt("farm",0);
+		case "Pipe":
+			return new PipePatt("pipe",0);
+		case "Map":
+			return new MapPatt("map",0);
+		}
+		return null;
+	}
+public static Skeleton getType1(AssignmentContext ctx) {
 		
 		switch(ctx.varType().getText()) {
 		case "Seq":
@@ -24,7 +51,7 @@ public class Util {
 		case "Pipe":
 			return new Pipeline(0);
 		case "Map":
-			return new model.MapSkel(0);
+			return new MapSkel(0);
 		}
 		return null;
 	}

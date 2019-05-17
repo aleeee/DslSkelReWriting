@@ -1,10 +1,18 @@
 package model;
 
-public class Farm extends SkeletonModel{
-	
+import visitor.NodeVisitor;
+import visitor.Visitable;
+
+public class Farm extends SkeletonModel implements Visitable{
 	public Farm(long serviceTime) {
 		this.serviceTime=serviceTime;
 	}
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);
+		
+	}
+	
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub

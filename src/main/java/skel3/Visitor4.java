@@ -79,7 +79,7 @@ public class Visitor4 extends Skel3BaseVisitor<Node>{
 
 	@Override
 	public Node visitAssignment(AssignmentContext ctx) {
-		variables.put(ctx.varName.getText(),Util.getType(ctx));
+		variables.put(ctx.varName.getText(),Util.getType1(ctx));
 
 		return super.visitAssignment(ctx);
 	}

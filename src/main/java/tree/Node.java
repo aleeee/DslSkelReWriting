@@ -1,40 +1,9 @@
 package tree;
 
-import java.awt.AWTKeyStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
 import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.Set;
-
-import javax.swing.InputVerifier;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JRootPane;
-import javax.swing.JToolTip;
-import javax.swing.KeyStroke;
-import javax.swing.TransferHandler;
-import javax.swing.border.Border;
-import javax.swing.event.AncestorListener;
-import javax.swing.plaf.ComponentUI;
-
 import model.Skeleton;
 
-public class Node{
+public class Node implements Skeleton{
 	ArrayList<Node> children;
 	Node parent;
 	String lable;
@@ -81,5 +50,25 @@ public class Node{
 	public String toString() {
 		return "Node [ lable=" + lable + ", skeleton=" + skeleton
 				+ ", child=" + child + " +children=" + children +"]";
+	}
+	@Override
+	public int parallelismDegree() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public long serviceTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public long completionTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void setServiceTime(long ts) {
+		// TODO Auto-generated method stub
+		
 	}
 	}

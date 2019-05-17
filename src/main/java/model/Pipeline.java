@@ -1,7 +1,19 @@
 package model;
 
-public class Pipeline extends SkeletonModel {
+import visitor.NodeVisitor;
+import visitor.Visitable;
+
+public class Pipeline extends SkeletonModel implements Visitable{
 	
+	public Pipeline(long serviceTime) {
+		this.serviceTime = serviceTime;
+	}
+	
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);
+	}
+
 	@Override
 	public long getServiceTime() {
 		// TODO Auto-generated method stub
@@ -12,9 +24,7 @@ public class Pipeline extends SkeletonModel {
 		// TODO Auto-generated method stub
 		super.setServiceTime(serviceTime);
 	}
-	public Pipeline(long serviceTime) {
-		this.serviceTime = serviceTime;
-	}
+	
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub
