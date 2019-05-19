@@ -3,16 +3,12 @@ package model;
 import visitor.NodeVisitor;
 import visitor.Visitable;
 
-public class Comp extends SkeletonModel implements Visitable{
+public class Comp extends SkeletonModel {
 	
 	public Comp(long serviceTime) {
 		this.serviceTime = serviceTime;
 	}
-	@Override
-	public void accept(NodeVisitor visitor) {
-		visitor.visit(this);
-		
-	}
+	
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub

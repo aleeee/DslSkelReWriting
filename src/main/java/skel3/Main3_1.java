@@ -32,7 +32,7 @@ public class Main3_1 {
         System.out.println(n);
 //		display(n);
         NodesVisitor v = new NodesVisitor();
-        v.visit( (SeqPatt) n);
+        v.visit( n);
         
         printTree(n);
 //        System.out.println(getMainNode(n));

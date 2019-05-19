@@ -3,16 +3,13 @@ package model;
 import visitor.NodeVisitor;
 import visitor.Visitable;
 
-public class Pipeline extends SkeletonModel implements Visitable{
+public class Pipeline extends SkeletonModel{
 	
 	public Pipeline(long serviceTime) {
 		this.serviceTime = serviceTime;
 	}
 	
-	@Override
-	public void accept(NodeVisitor visitor) {
-		visitor.visit(this);
-	}
+	
 
 	@Override
 	public long getServiceTime() {

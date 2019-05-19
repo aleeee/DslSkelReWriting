@@ -39,9 +39,9 @@ public class Visitor5 extends Skel3BaseVisitor<SkeletonPatt>{
 	public SkeletonPatt visitSkeletonProgram(SkeletonProgramContext ctx) {
 		SeqPatt s = new SeqPatt(0);
 		ArrayList<SkeletonPatt> children = new ArrayList<>();
-		ctx.programPart().forEach(p -> {children.add(visit(p));});
+		ctx.programPart().forEach(p -> {children.add(visitProgramPart(p));});
 		s.setChildren(children);
-		System.out.println("s " + s);
+//		System.out.println("s " + s);
 		return s;
 	}
 
@@ -53,7 +53,7 @@ public class Visitor5 extends Skel3BaseVisitor<SkeletonPatt>{
 		SkeletonPatt main = visit(ctx.mainExpr());
 		children.add(main);
 		s.setChildren(children);
-		System.out.println("main " + main);
+//		System.out.println("main " + main);
 		return s;
 	}
 
@@ -68,7 +68,7 @@ public class Visitor5 extends Skel3BaseVisitor<SkeletonPatt>{
 		SeqPatt root = new SeqPatt(0);
 		SkeletonPatt  main = visit(ctx.expr);
 		root.setChild(main);
-		System.out.println("root main " + main.toString() );
+//		System.out.println("root main " + main.toString() );
 		return root;
 		
 	}

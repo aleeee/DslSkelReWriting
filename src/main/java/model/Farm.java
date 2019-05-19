@@ -3,14 +3,9 @@ package model;
 import visitor.NodeVisitor;
 import visitor.Visitable;
 
-public class Farm extends SkeletonModel implements Visitable{
+public class Farm extends SkeletonModel{
 	public Farm(long serviceTime) {
 		this.serviceTime=serviceTime;
-	}
-	@Override
-	public void accept(NodeVisitor visitor) {
-		visitor.visit(this);
-		
 	}
 	
 	@Override

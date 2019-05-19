@@ -5,8 +5,16 @@ import tree.model.FarmPatt;
 import tree.model.MapPatt;
 import tree.model.PipePatt;
 import tree.model.SeqPatt;
+import tree.model.SkeletonPatt;
 
 public class NodesVisitor implements NodeVisitor {
+	
+	@Override
+	public void visit(SkeletonPatt s) {
+		System.out.println("sk " + s);
+		visit(s.getChild().getChild());
+		
+	}
 
 	@Override
 	public void visit(SeqPatt s) {
@@ -25,17 +33,18 @@ public class NodesVisitor implements NodeVisitor {
 	}
 	@Override
 	public void visit(FarmPatt s) {
-		System.out.println(s);
+		System.out.println("farm "+s);
 	}
 	@Override
 	public void visit(PipePatt s) {
-		System.out.println(s);
+		System.out.println("pipe "+s);
 		
 	}
 	@Override
 	public void visit(MapPatt s) {
 		System.out.println(s);
 	}
+	
 
 	
 
