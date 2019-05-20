@@ -9,16 +9,22 @@ import tree.model.SkeletonPatt;
 
 public class NodesVisitor implements NodeVisitor {
 	
-	@Override
-	public void visit(SkeletonPatt s) {
-		System.out.println("sk " + s);
-		visit(s.getChild().getChild());
-		
-	}
+//	@Override
+//	public void visit(SkeletonPatt s) {
+//		System.out.println("sk " + s);
+//		
+//		
+//	}
 
 	@Override
 	public void visit(SeqPatt s) {
 		System.out.println("v " +s);
+		Visitable c = (Visitable) s.getChild();
+		if(c != null)
+			c.accept(this);
+		if(s.getChildren() != null)
+			s.getChildren().forEach(cl -> { if(cl != null) {Visitable cc = (Visitable) cl; cc.accept(this);}});;
+		
 	}
 	@Override
 	public void visit(CompPatt s) {

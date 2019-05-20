@@ -13,5 +13,5 @@ public interface NodeVisitor {
 	public void visit(FarmPatt s);
 	public void visit(PipePatt s);
 	public void visit(MapPatt s);
-	public void visit(SkeletonPatt s);
+//	public void visit(SkeletonPatt s);
 }

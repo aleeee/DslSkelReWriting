@@ -25,8 +25,7 @@ public class SeqPatt  implements SkeletonPatt, Visitable {
 
 	@Override
 	public long serviceTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return serviceTime;
 	}
 
 	@Override
@@ -37,32 +36,29 @@ public class SeqPatt  implements SkeletonPatt, Visitable {
 
 	@Override
 	public void accept(NodeVisitor visitor) {
-		// TODO Auto-generated method stub
+		visitor.visit(this);
 
 	}
 
 	@Override
 	public void setServiceTime(long ts) {
-		// TODO Auto-generated method stub
+		this.serviceTime=ts;
 		
 	}
 
 	@Override
 	public ArrayList<SkeletonPatt> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
+		return children;
 	}
 
 	@Override
 	public String getLable() {
-		// TODO Auto-generated method stub
-		return null;
+		return lable;
 	}
 
 	@Override
 	public SkeletonPatt getChild() {
-		// TODO Auto-generated method stub
-		return null;
+		return child;
 	}
 
 	public SkeletonPatt getParent() {

@@ -40,7 +40,7 @@ public class PipePatt implements SkeletonPatt, Visitable {
 
 	@Override
 	public void accept(NodeVisitor visitor) {
-		// TODO Auto-generated method stub
+		visitor.visit(this);
 
 	}
 
@@ -52,20 +52,17 @@ public class PipePatt implements SkeletonPatt, Visitable {
 
 	@Override
 	public ArrayList<SkeletonPatt> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
+		return children;
 	}
 
 	@Override
 	public String getLable() {
-		// TODO Auto-generated method stub
-		return null;
+		return lable;
 	}
 
 	@Override
 	public SkeletonPatt getChild() {
-		// TODO Auto-generated method stub
-		return null;
+		return child;
 	}
 
 	public SkeletonPatt getParent() {
