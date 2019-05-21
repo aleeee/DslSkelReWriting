@@ -3,21 +3,34 @@ package tree.model;
 import java.util.ArrayList;
 
 import model.Skeleton;
+import rewriter.SkelReWriter;
 import tree.Node;
 import visitor.NodeVisitor;
 import visitor.Visitable;
 
-public class CompPatt implements SkeletonPatt, Visitable {
+public class CompPatt implements SkeletonPatt {
 	ArrayList<SkeletonPatt> children;
 	SkeletonPatt parent;
 	String lable;
 	SkeletonPatt child;
 	long serviceTime;
+	ArrayList<SkeletonPatt> patterns;
 
 	public CompPatt(String lable, long serviceTime) {
 		super();
 		this.lable = lable;
 		this.serviceTime = serviceTime;
+	}
+
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);
+
+	}
+
+	@Override
+	public void refactor(SkelReWriter reWriter) {
+		reWriter.reWrite(this);
 	}
 
 	@Override
@@ -29,7 +42,7 @@ public class CompPatt implements SkeletonPatt, Visitable {
 	@Override
 	public long serviceTime() {
 		// TODO Auto-generated method stub
-		return 0;
+		return serviceTime;
 	}
 
 	@Override
@@ -39,14 +52,8 @@ public class CompPatt implements SkeletonPatt, Visitable {
 	}
 
 	@Override
-	public void accept(NodeVisitor visitor) {
-		visitor.visit(this);
-
-	}
-
-	@Override
 	public void setServiceTime(long ts) {
-		this.serviceTime=ts;
+		this.serviceTime = ts;
 	}
 
 	@Override
@@ -88,12 +95,18 @@ public class CompPatt implements SkeletonPatt, Visitable {
 		this.child = child;
 	}
 
+	public ArrayList<SkeletonPatt> getPatterns() {
+		return patterns;
+	}
+
+	public void setPatterns(ArrayList<SkeletonPatt> patterns) {
+		this.patterns = patterns;
+	}
+
 	@Override
 	public String toString() {
 		return "CompPatt [children=" + children + ", parent=" + parent + ", lable=" + lable + ", child=" + child
 				+ ", serviceTime=" + serviceTime + "]";
 	}
-
-
 
 }

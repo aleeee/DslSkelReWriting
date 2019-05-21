@@ -3,22 +3,31 @@ package tree.model;
 import java.util.ArrayList;
 
 import model.Skeleton;
+import rewriter.SkelReWriter;
 import visitor.NodeVisitor;
 import visitor.Visitable;
 
-public class MapPatt  implements SkeletonPatt,Visitable {
+public class MapPatt  implements SkeletonPatt {
 	ArrayList<SkeletonPatt> children;
 	SkeletonPatt parent;
 	String lable;
 	SkeletonPatt child;
 	long serviceTime;
-
+	ArrayList<SkeletonPatt> patterns;
 	public MapPatt(String lable, long serviceTime) {
 		super();
 		this.lable = lable;
 		this.serviceTime = serviceTime;
 	}
+	@Override
+	public void accept(NodeVisitor visitor) {
+		visitor.visit(this);
 
+	}
+	@Override
+	public void refactor(SkelReWriter reWriter) {
+		reWriter.reWrite(this);
+	}
 	@Override
 	public int parallelismDegree() {
 		// TODO Auto-generated method stub
@@ -28,7 +37,7 @@ public class MapPatt  implements SkeletonPatt,Visitable {
 	@Override
 	public long serviceTime() {
 		// TODO Auto-generated method stub
-		return 0;
+		return serviceTime;
 	}
 
 	@Override
@@ -37,11 +46,7 @@ public class MapPatt  implements SkeletonPatt,Visitable {
 		return 0;
 	}
 
-	@Override
-	public void accept(NodeVisitor visitor) {
-		visitor.visit(this);
 
-	}
 
 	@Override
 	public void setServiceTime(long ts) {
@@ -88,6 +93,12 @@ public class MapPatt  implements SkeletonPatt,Visitable {
 		this.child = child;
 	}
 
+	public ArrayList<SkeletonPatt> getPatterns() {
+		return patterns;
+	}
+	public void setPatterns(ArrayList<SkeletonPatt> patterns) {
+		this.patterns = patterns;
+	}
 	@Override
 	public String toString() {
 		return "MapPatt [children=" + children + ", parent=" + parent + ", lable=" + lable + ", child=" + child

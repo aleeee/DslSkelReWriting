@@ -28,16 +28,16 @@ public class Main3_1 {
         Skel3Lexer lexer = new Skel3Lexer(CharStreams.fromPath(path));
         Skel3Parser parser = new Skel3Parser(new CommonTokenStream(lexer));
         ParseTree tree = parser.skeletonProgram();
-        Visitor5 visitor3 = new Visitor5();
+        Visitor6 visitor3 = new Visitor6();
         SkeletonPatt n =visitor3.visit(tree);
         System.out.println("n "+ n);
-        printTree(n);
+//        printTree(n);
 //		display(n);
         NodesVisitor v = new NodesVisitor();
 //        v.visit( n);
-        Visitable vt = (Visitable) n;
-        vt.accept(v);
-       
+
+        n.accept(v);
+        System.out.println("after " + n);
 //        System.out.println(getMainNode(n));
 //        System.out.println(Util.computeServiceTime(getMainNode(n),0));
     }
