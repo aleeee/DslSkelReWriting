@@ -29,8 +29,20 @@ public class SkelReWriter implements ReWriter {
 
 	@Override
 	public void reWrite(CompPatt s) {
+		ArrayList<SkeletonPatt> patterns = new ArrayList<>();
 		// pipe intro
+		PipePatt pipe = new PipePatt("pipe", s.getChildren() != null? (s.getChildren().stream().mapToLong(SkeletonPatt::serviceTime)
+				.reduce(0, (c1,c2) -> c1 > c2 ? c1: c2)): 0);
+		pipe.setChildren(s.getChildren());
+		patterns.add(pipe);
+		
 		// farm intro
+		FarmPatt farm = new FarmPatt("farm", s.getServiceTime()/n);
+		farm.setChild(s);
+		patterns.add(farm);
+		
+		//map intro
+		
 		// for each stage
 		// rewrite
 	}
