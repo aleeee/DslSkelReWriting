@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import model.Seq;
 import pattern.skel3.Skel3Lexer;
 import pattern.skel3.Skel3Parser;
+import rewriter.SkelReWriter;
 import tree.Node;
 import tree.model.SeqPatt;
 import tree.model.SkeletonPatt;
@@ -38,6 +39,10 @@ public class Main3_1 {
 
         n.accept(v);
         System.out.println("after " + n);
+        SkelReWriter reWriter = new SkelReWriter();
+        n.refactor(reWriter);
+        System.out.println("refactoring options" + n.getPatterns());
+       n.getChildren().stream().forEach(sk -> System.out.println(sk.getPatterns()));
 //        System.out.println(getMainNode(n));
 //        System.out.println(Util.computeServiceTime(getMainNode(n),0));
     }

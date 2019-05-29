@@ -17,5 +17,5 @@ public interface SkeletonPatt {
 	public SkeletonPatt getChild() ;
 	public void accept(NodeVisitor visitor);
 	public void refactor(SkelReWriter reWriter);
-
+	public ArrayList<SkeletonPatt> getPatterns();
 }

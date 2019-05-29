@@ -108,5 +108,6 @@ public class CompPatt implements SkeletonPatt {
 		return "CompPatt [children=" + children + ", parent=" + parent + ", lable=" + lable + ", child=" + child
 				+ ", serviceTime=" + serviceTime + "]";
 	}
+	
 
 }
