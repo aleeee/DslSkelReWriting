@@ -103,7 +103,38 @@ public class SkelReWriter implements ReWriter {
 					.orElse(null);
 			if (p0 != null) {
 				int index = s.getChildren().indexOf(p0);
-
+				if(index == 0) {
+					
+					PipePatt pipe0= (PipePatt) s.getChildren().get(index);  
+					SkeletonPatt pat = pipe0.getChildren().get(0);
+					ArrayList<SkeletonPatt> innerPipeNodes = new ArrayList<SkeletonPatt>();
+					PipePatt outerPipe = new PipePatt("pipe",0);
+					PipePatt innerPipe = new PipePatt("pipe",0);
+					for(int i =1 ; i < pipe0.getChildren().size(); i++) { //start i at 1 because we took the first element to form associative pipe
+						innerPipeNodes.add(pipe0.getChildren().get(i));
+					}
+					innerPipeNodes.addAll(s.getChildren().subList(1, s.getChildren().size()));
+					innerPipe.setChildren(innerPipeNodes);
+					outerPipe.getChildren().add(pat);
+					outerPipe.getChildren().add(innerPipe);
+					
+					patterns.add(outerPipe);
+				}else {
+						PipePatt pipei= (PipePatt) s.getChildren().get(index);  
+						SkeletonPatt pat = pipei.getChildren().get(pipei.getChildren().size()-1); //get the last element of the inner pipe
+						ArrayList<SkeletonPatt> innerPipeNodes = new ArrayList<SkeletonPatt>();
+						PipePatt outerPipe = new PipePatt("pipe",0);
+						PipePatt innerPipe = new PipePatt("pipe",0);
+						innerPipeNodes.addAll(s.getChildren().subList(0, index));
+						innerPipeNodes.addAll(pipei.getChildren().subList(0, pipei.getChildren().size()-1));
+						innerPipe.setChildren(innerPipeNodes);
+						// eg . pipe(a, pipe(b,c), d) ----> pipe(pipe(a,b),c,d)
+						
+						outerPipe.getChildren().add(innerPipe);
+						outerPipe.getChildren().addAll(s.getChildren().subList(index+1, s.getChildren().size())); //if there are elements after inner pipe 
+						
+						patterns.add(outerPipe);
+					}
 			}
 
 			// find index of pipe
