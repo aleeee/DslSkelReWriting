@@ -91,7 +91,7 @@ public class SeqPatt implements SkeletonPatt {
 	public void setChild(SkeletonPatt child) {
 		this.child = child;
 	}
-
+	@Override
 	public ArrayList<SkeletonPatt> getPatterns() {
 		return patterns;
 	}
