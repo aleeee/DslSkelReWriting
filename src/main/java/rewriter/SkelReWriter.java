@@ -13,6 +13,26 @@ import tree.model.SeqPatt;
 import tree.model.SkeletonPatt;
 
 /**
+<<<<<<< HEAD
+ * pipeintro comp(D1;D2)! pipe(D1;D2)
+pipeelim pipe(D1;D2)!comp(D1;D2)
+compassoc comp(D1;comp(D2;D3))$comp(comp(D1;D2);D3)
+pipeassoc pipe(D1; pipe(D2;D3))$ pipe(pipe(D1;D2);D3)
+mapofcomp comp(map(D1);map(D2))!map(comp((D1;D2))
+compofmap map(comp(D1;D2)!comp((map(D1);map(D2))
+mapofpipe pipe(map(D1);map(D2))!map(pipe((D1;D2))
+pipeofmap map(pipe(D1;D2)! pipe((map(D1);map(D2))
+mapelim map(D)!D
+farmelim f arm(D)!D
+farmintro D! f arm(D)
+/***
+ * X -> <- farm(x)
+map(pipe(X1,....Xk) -> <- pipe(map(X1),....map(Xk))
+map(comp(X1,....Xk) -> <- comp(map(X1),....map(Xk))
+map(pipe(X1,....Xk) -> <- map(comp(X1,....Xk))
+pipe(map(X1),....map(Xk)) -> <- comp(map(X1),....map(Xk))
+ 
+=======
  * pipeintro comp(D1;D2)! pipe(D1;D2) 
  * pipeelim pipe(D1;D2)!comp(D1;D2)
  *  compassoc * comp(D1;comp(D2;D3))=comp(comp(D1;D2);D3) 
@@ -25,6 +45,7 @@ import tree.model.SkeletonPatt;
  *   farmelim farm(D)!D 
  *   farmintro D! f * arm(D)
  * 
+>>>>>>> branch 'master' of https://github.com/aleeee/DslSkelReWriting.git
  * @author me
  *
  */
