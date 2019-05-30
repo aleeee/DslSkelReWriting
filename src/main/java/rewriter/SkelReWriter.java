@@ -22,6 +22,13 @@ pipeofmap map(pipe(D1;D2)! pipe((map(D1);map(D2))
 mapelim map(D)!D
 farmelim f arm(D)!D
 farmintro D! f arm(D)
+/***
+ * X -> <- farm(x)
+map(pipe(X1,....Xk) -> <- pipe(map(X1),....map(Xk))
+map(comp(X1,....Xk) -> <- comp(map(X1),....map(Xk))
+map(pipe(X1,....Xk) -> <- map(comp(X1,....Xk))
+pipe(map(X1),....map(Xk)) -> <- comp(map(X1),....map(Xk))
+ 
  * @author me
  *
  */
